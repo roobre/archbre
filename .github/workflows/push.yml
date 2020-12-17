@@ -1,0 +1,19 @@
+name: Release
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build docker image
+        run: docker build . -t roobre/archbre
+      - uses: docker/login-action@v1
+        with:
+          username: roobre
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Upload docker images
+        run: docker push roobre/archbre
