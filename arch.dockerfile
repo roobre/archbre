@@ -6,7 +6,7 @@ RUN echo archbre >> /etc/hostname &&\
 RUN useradd -m roobre
 
 RUN pacman -Syu --noconfirm
-RUN pacman -S --noconfirm zsh chezmoi bat pv ffmpeg go hub hugo inotify-tools iperf3 wget screen openscad radare2 \
+RUN pacman -S --noconfirm zsh chezmoi bat pv go hub iperf3 wget screen radare2 \
     rsync strace kubectl valgrind whois bind openbsd-netcat nginx
 
 RUN su -l roobre -c 'sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"' &&\
